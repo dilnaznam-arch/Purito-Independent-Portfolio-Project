@@ -1,0 +1,2637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Purito Türkiye — E-commerce Growth Strategy</title>
+  <meta name="description" content="Independent portfolio case study exploring e-commerce growth opportunities for Purito Türkiye.">
+  <meta name="theme-color" content="#F7F2EA">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700&display=swap">
+
+  <style>
+    /* =====================================================================
+       Design tokens
+       Palette translated from the moodboard: Purito's forest green + mint
+       (brand references), lily-petal pinks (palette reference), warm ivory
+       grounds (Lagom / Fluff references), peach as a tertiary warmth.
+       ===================================================================== */
+    :root {
+      /* Ground */
+      --bg: #F7F2EA;
+      --surface: #FFFDFA;
+      --surface-2: #F1EBE2;
+      --line: #DCD2C5;
+
+      /* Ink */
+      --fg: #241F1B;
+      --fg-2: #6B6159;
+
+      /* Purito botanical */
+      --forest: #1F3F33;
+      --forest-deep: #163026;
+      --mint: #CDE5D5;
+      --mint-2: #A9D3B8;
+      --sage: #7E9A83;
+      --sage-ink: #3F5E47;
+
+      /* Lily-petal pinks (used strategically, never everywhere) */
+      --rose: #C9557C;
+      --pink: #F2A5BA;
+      --blush: #F5C9D2;
+      --blush-soft: #FBE4E7;
+
+      /* Warm tertiary */
+      --peach: #FBEEDF;
+      --gold: #A8824F;
+
+      /* Editorial markers (epistemic status) */
+      --fact: #3F5E47;
+      --recommend: #A8824F;
+      --project: #B04D73;
+
+      /* Chapter fields */
+      --ch-forest-bg: #1F3F33;
+      --ch-forest-fg: #F6F1E8;
+      --ch-forest-fg2: #BFD1C3;
+      --ch-forest-line: rgba(246, 241, 232, 0.18);
+      --ch-forest-surface: rgba(255, 255, 255, 0.05);
+
+      --ch-blush-bg: #F5CBD3;
+      --ch-blush-fg: #2E1F24;
+      --ch-blush-fg2: #7A5560;
+      --ch-blush-line: rgba(140, 70, 90, 0.24);
+      --ch-blush-surface: rgba(255, 255, 255, 0.5);
+
+      --ch-mint-bg: #D4E8DA;
+      --ch-mint-fg: #1C2F26;
+      --ch-mint-fg2: #4A6353;
+      --ch-mint-line: rgba(31, 63, 51, 0.22);
+      --ch-mint-surface: rgba(255, 253, 250, 0.78);
+
+      --ch-peach-bg: #FBEFE2;
+      --ch-peach-fg: #241F1B;
+      --ch-peach-fg2: #6B6159;
+      --ch-peach-line: rgba(100, 70, 40, 0.18);
+      --ch-peach-surface: rgba(255, 253, 250, 0.7);
+
+      --stamp: #C9557C;
+      --stamp-text: #FFF6F8;
+
+      --shadow: 0 24px 60px -36px rgba(45, 35, 28, 0.42);
+      --shadow-soft: 0 14px 40px -30px rgba(45, 35, 28, 0.35);
+
+      --font-display: 'Fraunces', 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+      --gutter: 1.25rem;
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: 2.25rem;
+      --space-xl: 3.5rem;
+      --space-2xl: 6rem;
+
+      --radius: 3px;
+      color-scheme: light;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #1A1714;
+        --surface: #221E1A;
+        --surface-2: #2B2622;
+        --line: #3A332D;
+        --fg: #F1EBE3;
+        --fg-2: #ABA198;
+        --forest: #1A3329;
+        --forest-deep: #122219;
+        --mint: #2A4A3A;
+        --mint-2: #6FA586;
+        --sage: #8FAA93;
+        --sage-ink: #A9C6AE;
+        --rose: #E08AA8;
+        --pink: #C97A92;
+        --blush: #4A2D37;
+        --blush-soft: #3A2630;
+        --peach: #2A231D;
+        --gold: #D1AC78;
+        --fact: #A9C6AE;
+        --recommend: #D1AC78;
+        --project: #E08AA8;
+        --ch-forest-bg: #152A22;
+        --ch-forest-fg: #EEF3EC;
+        --ch-forest-fg2: #A9C2AE;
+        --ch-forest-line: rgba(238, 243, 236, 0.14);
+        --ch-forest-surface: rgba(255, 255, 255, 0.05);
+        --ch-blush-bg: #3A2530;
+        --ch-blush-fg: #F6E7EB;
+        --ch-blush-fg2: #D4AAB8;
+        --ch-blush-line: rgba(246, 231, 235, 0.16);
+        --ch-blush-surface: rgba(255, 255, 255, 0.06);
+        --ch-mint-bg: #1C3028;
+        --ch-mint-fg: #E8F1EA;
+        --ch-mint-fg2: #A9C6AE;
+        --ch-mint-line: rgba(232, 241, 234, 0.14);
+        --ch-mint-surface: rgba(255, 255, 255, 0.06);
+        --ch-peach-bg: #241F1A;
+        --ch-peach-fg: #F1EBE3;
+        --ch-peach-fg2: #B5A999;
+        --ch-peach-line: rgba(241, 235, 227, 0.14);
+        --ch-peach-surface: rgba(255, 255, 255, 0.05);
+        --stamp: #E08AA8;
+        --stamp-text: #2A1A20;
+        --shadow: 0 24px 60px -36px rgba(0, 0, 0, 0.7);
+        --shadow-soft: 0 14px 40px -30px rgba(0, 0, 0, 0.6);
+        color-scheme: dark;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --bg: #1A1714;
+      --surface: #221E1A;
+      --surface-2: #2B2622;
+      --line: #3A332D;
+      --fg: #F1EBE3;
+      --fg-2: #ABA198;
+      --forest: #1A3329;
+      --forest-deep: #122219;
+      --mint: #2A4A3A;
+      --mint-2: #6FA586;
+      --sage: #8FAA93;
+      --sage-ink: #A9C6AE;
+      --rose: #E08AA8;
+      --pink: #C97A92;
+      --blush: #4A2D37;
+      --blush-soft: #3A2630;
+      --peach: #2A231D;
+      --gold: #D1AC78;
+      --fact: #A9C6AE;
+      --recommend: #D1AC78;
+      --project: #E08AA8;
+      --ch-forest-bg: #152A22;
+      --ch-forest-fg: #EEF3EC;
+      --ch-forest-fg2: #A9C2AE;
+      --ch-forest-line: rgba(238, 243, 236, 0.14);
+      --ch-forest-surface: rgba(255, 255, 255, 0.05);
+      --ch-blush-bg: #3A2530;
+      --ch-blush-fg: #F6E7EB;
+      --ch-blush-fg2: #D4AAB8;
+      --ch-blush-line: rgba(246, 231, 235, 0.16);
+      --ch-blush-surface: rgba(255, 255, 255, 0.06);
+      --ch-mint-bg: #1C3028;
+      --ch-mint-fg: #E8F1EA;
+      --ch-mint-fg2: #A9C6AE;
+      --ch-mint-line: rgba(232, 241, 234, 0.14);
+      --ch-mint-surface: rgba(255, 255, 255, 0.06);
+      --ch-peach-bg: #241F1A;
+      --ch-peach-fg: #F1EBE3;
+      --ch-peach-fg2: #B5A999;
+      --ch-peach-line: rgba(241, 235, 227, 0.14);
+      --ch-peach-surface: rgba(255, 255, 255, 0.05);
+      --stamp: #E08AA8;
+      --stamp-text: #2A1A20;
+      --shadow: 0 24px 60px -36px rgba(0, 0, 0, 0.7);
+      --shadow-soft: 0 14px 40px -30px rgba(0, 0, 0, 0.6);
+      color-scheme: dark;
+    }
+
+    /* =====================================================================
+       Base
+       ===================================================================== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 4.25rem; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    @media (min-width: 720px) {
+      :root { --gutter: 2.5rem; }
+    }
+
+    @media (min-width: 1100px) {
+      :root { --gutter: 3.5rem; }
+    }
+
+    p, li {
+      color: inherit;
+      font-size: 1rem;
+      margin-bottom: var(--space-sm);
+      max-width: 66ch;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    strong { font-weight: 600; }
+
+    small { font-size: 0.8rem; color: var(--fg-2); }
+
+    em { font-style: italic; }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+      color: var(--fg);
+      text-wrap: balance;
+      hyphens: manual;
+      font-variation-settings: "SOFT" 30, "WONK" 0;
+    }
+
+    h1 {
+      font-size: clamp(3.6rem, 10.5vw, 8.6rem);
+      font-weight: 300;
+      line-height: 0.9;
+      letter-spacing: -0.035em;
+      font-variation-settings: "opsz" 144, "SOFT" 40, "WONK" 0;
+    }
+
+    h2 {
+      font-size: clamp(2.5rem, 5.6vw, 4.5rem);
+      line-height: 0.98;
+      letter-spacing: -0.025em;
+      font-variation-settings: "opsz" 144, "SOFT" 30, "WONK" 0;
+      margin-bottom: var(--space-md);
+    }
+
+    h3 { font-size: clamp(1.5rem, 3vw, 2rem); margin: var(--space-xl) 0 var(--space-sm); }
+    h4 { font-size: 1.35rem; margin-bottom: var(--space-xs); }
+
+    .it { font-style: italic; font-weight: 300; }
+    .nw { white-space: nowrap; }
+    br.bk { display: none; }
+    @media (min-width: 600px) { br.bk { display: inline; } }
+
+    a {
+      color: var(--sage-ink);
+      text-decoration: none;
+      border-bottom: 1px solid color-mix(in srgb, currentColor 40%, transparent);
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    a:hover { border-bottom-color: currentColor; }
+
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--rose);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    /* =====================================================================
+       Editorial primitives
+       ===================================================================== */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--fg-2);
+      margin-bottom: var(--space-sm);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.6;
+    }
+
+    .eyebrow.plain::before { display: none; }
+
+    .caption {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--fg-2);
+      line-height: 1.6;
+    }
+
+    .caption sup { font-family: var(--font-display); font-style: italic; font-size: 0.9em; margin-right: 0.35em; text-transform: none; letter-spacing: 0; }
+
+    /* Chapter folio — outlined numeral, the running "page number" of the lookbook */
+    .folio {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(4.5rem, 10vw, 8.5rem);
+      line-height: 0.8;
+      letter-spacing: -0.04em;
+      color: transparent;
+      -webkit-text-stroke: 1px color-mix(in srgb, var(--fg) 55%, transparent);
+      font-variation-settings: "opsz" 144, "SOFT" 60, "WONK" 1;
+      user-select: none;
+    }
+
+    .folio.solid { color: var(--fg); -webkit-text-stroke: 0; }
+
+    /* Chapter sections */
+    .section {
+      position: relative;
+      padding: clamp(4.5rem, 9vw, 8rem) 0;
+      isolation: isolate;
+    }
+
+    .ch-forest {
+      --fg: var(--ch-forest-fg);
+      --fg-2: var(--ch-forest-fg2);
+      --line: var(--ch-forest-line);
+      --surface: var(--ch-forest-surface);
+      --sage-ink: var(--mint-2);
+      --fact: var(--mint-2);
+      --recommend: #E6C797;
+      --project: #F2A5BA;
+      background: var(--ch-forest-bg);
+      color: var(--fg);
+    }
+
+    .ch-blush {
+      --fg: var(--ch-blush-fg);
+      --fg-2: var(--ch-blush-fg2);
+      --line: var(--ch-blush-line);
+      --surface: var(--ch-blush-surface);
+      background: var(--ch-blush-bg);
+      color: var(--fg);
+    }
+
+    .ch-mint {
+      --fg: var(--ch-mint-fg);
+      --fg-2: var(--ch-mint-fg2);
+      --line: var(--ch-mint-line);
+      --surface: var(--ch-mint-surface);
+      background: var(--ch-mint-bg);
+      color: var(--fg);
+    }
+
+    .ch-peach {
+      --fg: var(--ch-peach-fg);
+      --fg-2: var(--ch-peach-fg2);
+      --line: var(--ch-peach-line);
+      --surface: var(--ch-peach-surface);
+      background:
+        repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px 72px),
+        var(--ch-peach-bg);
+      color: var(--fg);
+    }
+
+    .ch-ivory { background: var(--bg); }
+    .ch-milk { background: var(--surface); }
+
+    /* Chapter head variants */
+    .head-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-md) var(--space-xl);
+      align-items: start;
+      margin-bottom: var(--space-lg);
+    }
+
+    .head-grid .folio { margin-bottom: 0.5rem; }
+
+    @media (min-width: 880px) {
+      .head-grid { grid-template-columns: 240px minmax(0, 1fr); margin-bottom: var(--space-xl); }
+    }
+
+    .head-center { text-align: center; margin-bottom: var(--space-xl); }
+    .head-center h2 { margin: 0.5rem auto var(--space-md); max-width: 16ch; }
+    .head-center .folio { margin-bottom: 0.25rem; }
+    .head-center .eyebrow { justify-content: center; }
+
+    .head-split {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-sm);
+      align-items: end;
+      margin-bottom: var(--space-xl);
+    }
+
+    @media (min-width: 880px) {
+      .head-split { grid-template-columns: minmax(0, 1fr) auto; }
+      .head-split .folio { text-align: right; }
+    }
+
+    .lede {
+      font-size: 1.12rem;
+      line-height: 1.7;
+      max-width: 60ch;
+      margin-bottom: var(--space-lg);
+    }
+
+    .subhead {
+      font-family: var(--font-display);
+      font-size: clamp(1.55rem, 3vw, 2.1rem);
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin: var(--space-xl) 0 var(--space-md);
+      display: flex;
+      align-items: baseline;
+      gap: 0.8rem;
+    }
+
+    .subhead::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+      transform: translateY(-0.35em);
+    }
+
+    /* Claim markers — restrained tags, colour-coded by epistemic status */
+    .claim-marker {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1;
+      padding: 0.34rem 0.55rem 0.3rem;
+      border-radius: 999px;
+      margin: 0 0.35rem 0 0;
+      vertical-align: 0.15em;
+      border: 1px solid currentColor;
+      white-space: nowrap;
+    }
+
+    .claim-marker.fact { color: var(--fact); background: color-mix(in srgb, var(--fact) 12%, transparent); }
+    .claim-marker.recommend { color: var(--recommend); background: color-mix(in srgb, var(--recommend) 12%, transparent); }
+    .claim-marker.project { color: var(--project); border-style: dashed; background: transparent; }
+
+    /* Ledger — editorial label/text rows */
+    .ledger {
+      border-top: 1px solid var(--line);
+      margin: var(--space-md) 0 var(--space-lg);
+    }
+
+    .ledger-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-xs);
+      padding: var(--space-md) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .ledger-row h4 {
+      font-size: 1.4rem;
+      font-style: italic;
+      font-weight: 300;
+      margin: 0;
+      color: var(--fg);
+    }
+
+    .ledger-row p { margin: 0; }
+
+    @media (min-width: 720px) {
+      .ledger-row { grid-template-columns: 220px 1fr; gap: var(--space-lg); padding: 1.4rem 0; }
+    }
+
+    .note {
+      font-size: 0.875rem;
+      color: var(--fg-2);
+      border-left: 2px solid var(--rose);
+      padding: 0.1rem 0 0.1rem var(--space-sm);
+      margin: var(--space-md) 0;
+      max-width: 66ch;
+    }
+
+    .note strong { color: var(--fg); }
+
+    /* Asterisk bullets (Darling reference) */
+    .bullets {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .bullets li {
+      position: relative;
+      padding-left: 1.4rem;
+      margin: 0;
+      font-size: 0.95rem;
+      max-width: none;
+    }
+
+    .bullets li::before {
+      content: "✱";
+      position: absolute;
+      left: 0;
+      top: 0.05em;
+      font-size: 0.8rem;
+      color: var(--rose);
+    }
+
+    /* =====================================================================
+       Masthead
+       ===================================================================== */
+    .masthead {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      -webkit-backdrop-filter: blur(14px) saturate(1.3);
+      backdrop-filter: blur(14px) saturate(1.3);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .masthead-inner {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      min-height: 3.75rem;
+    }
+
+    .brand {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      letter-spacing: -0.01em;
+      color: var(--fg);
+      border: 0;
+      white-space: nowrap;
+    }
+
+    .brand em { color: var(--rose); font-weight: 300; }
+
+    .toc {
+      flex: 1;
+      display: flex;
+      gap: 1.35rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      white-space: nowrap;
+      font-size: 0.64rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.4rem 0;
+      -webkit-mask-image: linear-gradient(90deg, #000 90%, transparent);
+              mask-image: linear-gradient(90deg, #000 90%, transparent);
+    }
+
+    .toc::-webkit-scrollbar { display: none; }
+
+    .toc a { color: var(--fg-2); border: 0; transition: color 0.2s ease; }
+    .toc a:hover { color: var(--fg); }
+    .toc a i { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 0.9rem; letter-spacing: 0; margin-right: 0.3rem; color: var(--rose); text-transform: none; }
+
+    @media (min-width: 1100px) {
+      .toc { justify-content: center; mask-image: none; -webkit-mask-image: none; }
+    }
+
+    .theme-toggle {
+      flex: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      color: var(--fg);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .theme-toggle:hover { border-color: var(--rose); transform: translateY(-1px); }
+    .theme-toggle svg { width: 17px; height: 17px; }
+
+    /* =====================================================================
+       Hero — wide, calm cream field (Lagom reference), arch-cropped Purito
+       photography, offset mint block, rotating stamp (Purito round badges).
+       ===================================================================== */
+    .hero {
+      position: relative;
+      padding-top: clamp(3rem, 7vw, 6rem);
+      padding-bottom: clamp(3rem, 6vw, 5rem);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      /* soft blush bloom, top-right, like the lookbook's pink page */
+      content: "";
+      position: absolute;
+      inset: -10% -20% auto auto;
+      width: 60vw;
+      height: 60vw;
+      max-width: 820px;
+      max-height: 820px;
+      background: radial-gradient(closest-side, color-mix(in srgb, var(--pink) 32%, transparent), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: clamp(2.5rem, 6vw, 5rem);
+      align-items: center;
+    }
+
+    .hero-grid > * { min-width: 0; }
+
+    @media (min-width: 880px) {
+      .hero-grid { grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr); }
+    }
+
+    .hero-heading h1 { max-width: 7ch; }
+    .hero-heading h1 .it { color: var(--rose); display: block; padding-left: 0.12em; }
+
+    .hero-subtitle {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.8vw, 2rem);
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin-top: 1.4rem;
+      color: var(--fg);
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      max-width: none;
+    }
+
+    .hero-subtitle::before {
+      content: "";
+      width: 3rem;
+      height: 1px;
+      background: var(--fg);
+      opacity: 0.5;
+      flex: none;
+    }
+
+    .hero-lede {
+      margin-top: var(--space-md);
+      font-size: 1.02rem;
+      line-height: 1.8;
+      color: var(--fg-2);
+      max-width: 42ch;
+    }
+
+    .hero-visual { position: relative; margin: 0; }
+
+    .hero-art {
+      position: relative;
+      padding: 1.5rem 0 2.5rem 2rem;
+    }
+
+    .hero-art::before {
+      content: "SEOUL SKINCARE, REIMAGINED FOR TÜRKİYE";
+      position: absolute;
+      z-index: 3;
+      left: 0;
+      top: 2.5rem;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      color: var(--sage-ink);
+      font-size: 0.58rem;
+      letter-spacing: 0.24em;
+      font-weight: 700;
+    }
+
+    .hero-field {
+      position: absolute;
+      z-index: 0;
+      left: 0.6rem;
+      right: 18%;
+      top: 0;
+      bottom: 1.2rem;
+      background: var(--mint);
+      border-radius: 999px 999px var(--radius) var(--radius);
+    }
+
+    .hero-field::after {
+      /* centella line-art, Purito sticker-sheet reference */
+      content: "";
+      position: absolute;
+      left: 8%;
+      bottom: 8%;
+      width: 34%;
+      aspect-ratio: 1;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%231F3F33' stroke-width='1.3' stroke-linecap='round'%3E%3Cpath d='M50 30 C 76 22, 92 40, 88 62 C 84 82, 66 92, 50 90 C 34 92, 16 82, 12 62 C 8 40, 24 22, 50 30 Z'/%3E%3Cpath d='M50 30 V 88 M50 30 L 26 70 M50 30 L 74 70 M50 30 L 18 50 M50 30 L 82 50 M50 30 V 8'/%3E%3C/svg%3E") center / contain no-repeat;
+      opacity: 0.35;
+    }
+
+    .hero-photo {
+      position: relative;
+      z-index: 1;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border-radius: 999px 999px var(--radius) var(--radius);
+      background: #dfe8e6;
+      box-shadow: var(--shadow);
+      margin-left: 10%;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 55%;
+      transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .hero-photo:hover img { transform: scale(1.03); }
+
+    .hero-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 62%, rgba(20, 36, 28, 0.42));
+      pointer-events: none;
+    }
+
+    .photo-caption {
+      position: absolute;
+      z-index: 2;
+      right: 1.4rem;
+      bottom: 1.3rem;
+      text-align: right;
+      color: #fff;
+      font-size: 0.6rem;
+      letter-spacing: 0.22em;
+      font-weight: 600;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .stamp {
+      position: absolute;
+      z-index: 3;
+      left: 0.2rem;
+      bottom: -0.2rem;
+      width: clamp(104px, 13vw, 150px);
+      height: auto;
+      color: var(--stamp);
+      filter: drop-shadow(0 12px 22px rgba(45, 35, 28, 0.25));
+    }
+
+    .stamp text { fill: var(--stamp-text); font-family: var(--font-body); font-weight: 600; }
+    .stamp .leaf { stroke: var(--stamp-text); }
+
+    .hero-visual figcaption {
+      font-size: 0.72rem;
+      color: var(--fg-2);
+      margin: 0.6rem 0 0 2rem;
+      max-width: 36ch;
+      line-height: 1.6;
+    }
+
+    .hero-foot {
+      position: relative;
+      z-index: 1;
+      margin-top: clamp(2.5rem, 5vw, 4rem);
+      display: grid;
+      gap: var(--space-md);
+    }
+
+    .disclaimer {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--rose);
+      padding: 1.1rem 1.4rem 1.1rem 1.6rem;
+      font-size: 0.9rem;
+      line-height: 1.65;
+      max-width: none;
+      color: var(--fg);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .disclaimer::before {
+      content: "Portfolio note";
+      display: block;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 0.35rem;
+    }
+
+    .disclaimer strong { background: linear-gradient(transparent 62%, color-mix(in srgb, var(--pink) 45%, transparent) 62%); }
+
+    .hero-meta-footer {
+      border-top: 1px solid var(--fg);
+      display: grid;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--fg-2);
+      padding-top: 1rem;
+    }
+
+    .hero-meta-footer p { margin: 0; font-size: 0.85rem; color: var(--fg-2); max-width: none; line-height: 1.5; }
+    .hero-meta-footer strong {
+      display: block;
+      color: var(--fg);
+      font-weight: 600;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+
+    @media (min-width: 720px) {
+      .hero-meta-footer { grid-template-columns: 1fr 1fr 2fr; gap: var(--space-lg); }
+      .hero-meta-footer p + p { border-left: 1px solid var(--line); padding-left: var(--space-md); }
+    }
+
+    /* =====================================================================
+       01 · Brief — ivory page, sticky folio column with a lookbook inset
+       ===================================================================== */
+    .brief-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-lg) var(--space-2xl);
+      align-items: start;
+    }
+
+    @media (min-width: 880px) {
+      .brief-grid { grid-template-columns: 300px minmax(0, 1fr); }
+      .brief-aside { position: sticky; top: 5.5rem; }
+    }
+
+    .inset {
+      margin: var(--space-md) 0 0;
+      max-width: 240px;
+    }
+
+    .inset-frame {
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      background: var(--mint);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      transform: rotate(-2deg);
+    }
+
+    .inset-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+    .inset figcaption { margin-top: 0.8rem; max-width: 28ch; }
+
+    .checklist {
+      list-style: none;
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--fg);
+      margin: var(--space-md) 0;
+      padding: 0;
+      max-width: none;
+    }
+
+    .checklist li {
+      display: grid;
+      grid-template-columns: 2.6rem 1fr;
+      gap: var(--space-xs);
+      padding: 1rem 0.2rem;
+      border-bottom: 1px solid var(--line);
+      margin: 0;
+      max-width: none;
+      font-size: 0.95rem;
+    }
+
+    .checklist li::before {
+      content: attr(data-n);
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--rose);
+      font-size: 1.35rem;
+      line-height: 1.1;
+    }
+
+    .checklist strong { font-family: var(--font-display); font-weight: 500; font-size: 1.12rem; letter-spacing: -0.01em; }
+
+    @media (min-width: 720px) {
+      .checklist { grid-template-columns: 1fr 1fr; column-gap: var(--space-xl); }
+    }
+
+    /* =====================================================================
+       02 · Market snapshot — deep forest chapter (Purito brand green)
+       ===================================================================== */
+    .ch-forest .head-center h2 { max-width: 15ch; }
+    .ch-forest h2 .it { color: var(--pink); }
+    .ch-forest .folio { -webkit-text-stroke-color: color-mix(in srgb, var(--fg) 45%, transparent); }
+
+    .market-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-lg) var(--space-2xl);
+    }
+
+    @media (min-width: 1000px) {
+      .market-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+      .market-grid .subhead:first-child { margin-top: 0; }
+    }
+
+    .market-grid .subhead { margin-top: 0; }
+    .ch-forest .ledger { border-top-color: color-mix(in srgb, var(--fg) 50%, transparent); }
+    .ch-forest .ledger-row h4 { color: var(--mint-2); }
+    .ch-forest a { color: var(--pink); }
+    .ch-forest .note { border-left-color: var(--pink); }
+
+    .competitive-wrap, .measure-table-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: var(--space-md) 0 var(--space-sm);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 560px;
+      font-size: 0.93rem;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 1rem 1rem 1rem 0;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--fg-2);
+      padding-top: 0.5rem;
+      border-bottom-color: var(--fg);
+    }
+
+    td strong { font-family: var(--font-display); font-size: 1.3rem; font-weight: 400; letter-spacing: -0.01em; }
+
+    tr.highlight td { background: color-mix(in srgb, var(--mint-2) 22%, transparent); }
+    tr.highlight td:first-child { padding-left: 0.9rem; border-left: 2px solid var(--mint-2); }
+    tr.highlight td strong { color: var(--mint-2); font-style: italic; }
+
+    /* =====================================================================
+       03 · Personas — blush chapter (lookbook pink page), magazine columns
+       ===================================================================== */
+    .ch-blush { overflow: hidden; }
+
+    .ch-blush .texture {
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      right: -6%;
+      bottom: 0;
+      width: 46%;
+      background: url("assets/texture-gel.jpg") center / cover no-repeat;
+      opacity: 0.22;
+      mix-blend-mode: multiply;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 45%);
+              mask-image: linear-gradient(90deg, transparent, #000 45%);
+      pointer-events: none;
+    }
+
+    :root[data-theme="dark"] .ch-blush .texture { mix-blend-mode: screen; opacity: 0.12; }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .ch-blush .texture { mix-blend-mode: screen; opacity: 0.12; }
+    }
+
+    .ch-blush .container { position: relative; z-index: 1; }
+    .ch-blush h2 .it { color: var(--rose); }
+    .ch-blush .folio { -webkit-text-stroke-color: color-mix(in srgb, var(--rose) 70%, transparent); }
+
+    .personas {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-xl);
+      border-top: 1px solid var(--line);
+      padding-top: var(--space-lg);
+    }
+
+    @media (min-width: 880px) {
+      .personas { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+      .persona { padding: 0 var(--space-lg); }
+      .persona + .persona { border-left: 1px solid var(--line); }
+      .persona:first-child { padding-left: 0; }
+      .persona:last-child { padding-right: 0; }
+      .persona:nth-child(2) { padding-top: 3.5rem; }
+      .persona:nth-child(3) { padding-top: 1.5rem; }
+    }
+
+    .persona { position: relative; }
+
+    .persona-index {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--rose);
+      font-size: 2.6rem;
+      line-height: 1;
+      display: block;
+      letter-spacing: -0.03em;
+    }
+
+    .persona-index::first-letter { font-size: 1.1em; }
+
+    .persona h4 {
+      font-size: clamp(1.8rem, 2.4vw, 2.3rem);
+      margin: 0.9rem 0 0.8rem;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      max-width: 10ch;
+    }
+
+    .persona-meta {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fg-2);
+      margin-bottom: var(--space-sm);
+      max-width: none;
+    }
+
+    .persona-meta strong { font-weight: 600; color: var(--fg); }
+
+    .persona > p:not([class]) { font-size: 0.95rem; color: var(--fg); }
+
+    .persona-quote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.35rem;
+      line-height: 1.3;
+      color: var(--fg);
+      margin-top: var(--space-md);
+      max-width: none;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .persona-quote::before { content: "“"; color: var(--rose); margin-right: 0.1em; }
+    .persona-quote::after { content: "”"; color: var(--rose); margin-left: 0.05em; }
+
+    /* =====================================================================
+       04 · Growth — milk page: storefront window + social post mockups
+       ===================================================================== */
+    .concept-frame {
+      margin: var(--space-lg) 0;
+      background: var(--surface-2);
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .concept-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+      background: var(--forest);
+      color: #F6F1E8;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .concept-bar i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: 0.45;
+    }
+
+    .concept-bar i:nth-child(2) { opacity: 0.7; }
+    .concept-bar i:nth-child(3) { background: var(--pink); opacity: 1; }
+    .concept-bar span { margin-left: auto; font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 0.95rem; letter-spacing: 0; text-transform: none; }
+
+    .concept-inner { padding: var(--space-md); }
+
+    @media (min-width: 720px) {
+      .concept-inner { padding: var(--space-lg); }
+    }
+
+    .concept-head {
+      display: grid;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-md);
+    }
+
+    .concept-head h4 { font-size: 1.8rem; margin: 0; letter-spacing: -0.02em; }
+
+    .listing-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-md);
+    }
+
+    @media (min-width: 720px) {
+      .listing-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-lg); }
+    }
+
+    .listing {
+      background: var(--surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    @media (min-width: 1000px) {
+      .listing { grid-template-columns: 46% minmax(0, 1fr); }
+    }
+
+    .listing-visual {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: var(--mint);
+    }
+
+    @media (min-width: 1000px) {
+      .listing-visual { aspect-ratio: auto; min-height: 100%; }
+    }
+
+    .listing-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 58%;
+      transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .listing:hover .listing-visual img { transform: scale(1.04); }
+
+    .visual-tag {
+      position: absolute;
+      left: 0.75rem;
+      bottom: 0.75rem;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(255, 253, 250, 0.9);
+      color: #241F1B;
+      padding: 0.35rem 0.55rem;
+      border-radius: 999px;
+      line-height: 1;
+      max-width: calc(100% - 1.5rem);
+    }
+
+    .listing-info { padding: 1.4rem 1.4rem 1.5rem; display: flex; flex-direction: column; }
+
+    .product-name {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 0.6rem;
+    }
+
+    .product-price {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--rose);
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      padding: 0.35rem 0.7rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .product-detail {
+      font-size: 0.875rem;
+      color: var(--fg-2);
+      line-height: 1.6;
+      display: grid;
+      gap: 0.35rem;
+    }
+
+    .product-detail em { color: var(--fg-2); margin-top: 0.4rem; font-size: 0.8rem; }
+
+    .product-detail .check {
+      display: block;
+      padding-left: 1.2rem;
+      position: relative;
+      color: var(--fg);
+    }
+
+    .product-detail .check::before {
+      content: "✱";
+      position: absolute;
+      left: 0;
+      top: 0.05em;
+      font-size: 0.75rem;
+      color: var(--sage-ink);
+    }
+
+    .source-line { margin-top: var(--space-md); }
+
+    /* Social post mockups — 4:5 portrait tiles, staggered rhythm */
+    .campaign-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-lg);
+      margin-top: var(--space-md);
+    }
+
+    @media (min-width: 880px) {
+      .campaign-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-md); align-items: start; }
+      .post:nth-child(2) { margin-top: 2.5rem; }
+    }
+
+    .post {
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .post-art {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      padding: var(--space-md);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      background: var(--mint);
+    }
+
+    .post-art img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transition: transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .post:hover .post-art img { transform: scale(1.04); }
+
+    .post-art.art-edu img { object-position: center 60%; }
+    .post-art.art-partner img { object-position: 78% center; }
+    .post-art.art-stories img { object-position: center 45%; }
+
+    .post-art::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(20, 30, 24, 0.18), transparent 35%, transparent 55%, rgba(20, 30, 24, 0.55));
+      pointer-events: none;
+    }
+
+    .post-kicker {
+      position: relative;
+      z-index: 2;
+      align-self: flex-start;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #241F1B;
+      background: rgba(255, 253, 250, 0.92);
+      padding: 0.4rem 0.65rem;
+      border-radius: 999px;
+    }
+
+    .post-headline {
+      position: relative;
+      z-index: 2;
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 2.6vw, 2.1rem);
+      font-weight: 300;
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      color: #fff;
+      max-width: 11ch;
+      text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .post-headline .it { color: var(--pink); }
+
+    .post-body {
+      padding: 1.2rem var(--space-md) 1.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      flex: 1;
+    }
+
+    .post-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+    }
+
+    .post-copy {
+      font-size: 0.875rem;
+      color: var(--fg-2);
+      line-height: 1.6;
+      max-width: none;
+      margin: 0;
+    }
+
+    .post-cta {
+      margin-top: auto;
+      padding-top: 0.8rem;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--rose);
+    }
+
+    .post-cta::after { content: " →"; }
+
+    /* =====================================================================
+       05 · Funnel — mint chapter (Purito acrylic-box reference)
+       ===================================================================== */
+    .ch-mint h2 .it { color: var(--rose); }
+    .ch-mint .folio { -webkit-text-stroke-color: color-mix(in srgb, var(--fg) 45%, transparent); }
+    .ch-mint .note { border-left-color: var(--sage-ink); }
+
+    .funnel {
+      list-style: none;
+      display: grid;
+      gap: var(--space-sm);
+      margin: var(--space-lg) 0;
+      padding: 0;
+      max-width: none;
+    }
+
+    .stage {
+      display: grid;
+      gap: var(--space-sm);
+      align-items: stretch;
+      margin: 0;
+      max-width: none;
+    }
+
+    .stage-band {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      padding: 1.1rem 1.4rem;
+      border-radius: 999px var(--radius) var(--radius) 999px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .stage:last-child .stage-band { background: color-mix(in srgb, var(--pink) 32%, var(--surface)); }
+
+    .stage-num {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 2.6rem;
+      line-height: 1;
+      color: var(--rose);
+      min-width: 1.3em;
+      text-align: center;
+    }
+
+    .stage-band h4 { margin: 0; font-size: 1.6rem; letter-spacing: -0.02em; }
+
+    .stage-copy { padding: var(--space-xs) var(--space-xs) 0; }
+    .stage-copy p { margin: 0 0 0.5rem; font-size: 0.93rem; color: var(--fg-2); max-width: none; }
+    .stage-copy p strong { color: var(--fg); font-weight: 600; }
+
+    .stage:hover .stage-band {
+      transform: translateX(6px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    @media (min-width: 720px) {
+      .stage { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: var(--space-lg); }
+      .stage-band { width: var(--w, 100%); justify-self: start; }
+      .stage-copy { padding: 0; }
+    }
+
+    /* KPI arches — the lily-palette swatch shape */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm) var(--space-md);
+      font-size: 0.8rem;
+      color: var(--fg-2);
+      margin: var(--space-sm) 0 var(--space-md);
+    }
+
+    .legend span { display: inline-flex; align-items: center; gap: 0.5rem; }
+    .legend i { display: inline-block; width: 22px; height: 0; border-top: 1px solid var(--fg); }
+    .legend i.dashed { border-top-style: dashed; border-top-color: var(--rose); }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-sm);
+      margin: var(--space-md) 0 var(--space-lg);
+    }
+
+    @media (min-width: 880px) {
+      .kpi-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--space-md); }
+    }
+
+    .kpi-tile {
+      background: var(--surface);
+      border: 1px dashed var(--rose);
+      border-radius: 999px 999px var(--radius) var(--radius);
+      padding: 2.6rem 1.1rem 1.3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.35rem;
+      min-height: 14rem;
+      justify-content: flex-end;
+      transition: transform 0.3s ease;
+    }
+
+    .kpi-tile:hover { transform: translateY(-4px); }
+
+    .kpi-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--fg-2);
+    }
+
+    .kpi-status {
+      font-size: 0.56rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--rose);
+    }
+
+    .kpi-value {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.45rem, 2.2vw, 1.8rem) !important;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--fg);
+      margin: 0.25rem 0;
+    }
+
+    .kpi-desc { font-size: 0.78rem; color: var(--fg-2); line-height: 1.5; margin: 0; max-width: none; }
+
+    /* =====================================================================
+       06 · Campaign concepts — ivory page, hairline grid, numbered
+       ===================================================================== */
+    .initiatives {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      border-top: 1px solid var(--fg);
+      margin-top: var(--space-md);
+    }
+
+    @media (min-width: 720px) {
+      .initiatives { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+      .initiative:nth-child(odd) { border-right: 1px solid var(--line); padding-right: var(--space-xl); }
+      .initiative:nth-child(even) { padding-left: var(--space-xl); }
+    }
+
+    .initiative {
+      position: relative;
+      padding: var(--space-lg) 0;
+      border-bottom: 1px solid var(--line);
+      counter-increment: initiative;
+    }
+
+    .initiative::before {
+      content: "0" counter(initiative);
+      display: block;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 2.2rem;
+      line-height: 1;
+      color: var(--rose);
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.03em;
+    }
+
+    .initiative h4 {
+      font-size: clamp(1.6rem, 2.3vw, 2rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-md);
+      max-width: 16ch;
+    }
+
+    .initiative dl { display: grid; gap: 0.75rem; }
+
+    .initiative dl > div {
+      display: grid;
+      grid-template-columns: 6.5rem minmax(0, 1fr);
+      gap: 0.75rem;
+      align-items: baseline;
+    }
+
+    .initiative dt {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--fg-2);
+      padding-top: 0.25rem;
+    }
+
+    .initiative dd {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--fg);
+      line-height: 1.6;
+    }
+
+    .initiative .claim-marker { margin-bottom: 0.3rem; }
+
+    /* =====================================================================
+       07 · Measurement — peach chapter with pinstripes (Darling reference)
+       ===================================================================== */
+    .ch-peach .folio { -webkit-text-stroke-color: color-mix(in srgb, var(--gold) 80%, transparent); }
+    .ch-peach h2 .it { color: var(--gold); }
+    .ch-peach .note { border-left-color: var(--gold); }
+    .ch-peach table { background: var(--surface); }
+    .ch-peach th, .ch-peach td { padding-left: 0.9rem; }
+    .ch-peach th { background: color-mix(in srgb, var(--gold) 10%, transparent); }
+
+    .measure-table-wrap { border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+    .measure-table-wrap table { min-width: 680px; }
+
+    .cadence {
+      list-style: none;
+      display: grid;
+      gap: var(--space-md);
+      margin: var(--space-md) 0;
+      padding: 0;
+      max-width: none;
+      counter-reset: week;
+    }
+
+    @media (min-width: 880px) {
+      .cadence { grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+      .cadence::before {
+        content: "";
+        position: absolute;
+        top: 1.9rem;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--fg);
+        opacity: 0.4;
+      }
+    }
+
+    .cadence li {
+      margin: 0;
+      max-width: none;
+      position: relative;
+      padding-top: 0.5rem;
+      counter-increment: week;
+    }
+
+    .cadence li::before {
+      content: counter(week);
+      display: inline-grid;
+      place-items: center;
+      width: 2.8rem;
+      height: 2.8rem;
+      border-radius: 50%;
+      background: var(--fg);
+      color: var(--ch-peach-bg);
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.5rem;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 0.8rem;
+    }
+
+    @media (min-width: 880px) {
+      .cadence li { padding-right: var(--space-lg); }
+    }
+
+    .cadence-week {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .cadence li p { margin: 0; font-size: 0.93rem; max-width: 30ch; }
+
+    .tests { margin-top: var(--space-md); }
+    .ch-peach .ledger-row h4 { color: var(--gold); }
+
+    /* =====================================================================
+       08 · Summary — ivory page, pull statement, word-row skills,
+       closing full-bleed Purito photograph.
+       ===================================================================== */
+    .statement {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 2.8vw, 2.15rem);
+      line-height: 1.32;
+      font-weight: 300;
+      letter-spacing: -0.015em;
+      color: var(--fg);
+      max-width: 36ch;
+      margin: var(--space-md) 0 0;
+      padding-left: clamp(1.2rem, 3vw, 2.4rem);
+      border-left: 2px solid var(--rose);
+      text-wrap: pretty;
+    }
+
+    .statement strong { font-weight: 500; font-style: italic; background: linear-gradient(transparent 65%, color-mix(in srgb, var(--pink) 45%, transparent) 65%); }
+    .statement .claim-marker { font-family: var(--font-body); vertical-align: middle; margin-bottom: 0.4rem; display: inline-block; }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-xl) var(--space-2xl);
+      align-items: start;
+    }
+
+    @media (min-width: 1000px) {
+      .summary-grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); }
+      .summary-grid .subhead { margin-top: 0; }
+    }
+
+    .skills {
+      list-style: none;
+      padding: 0;
+      margin-top: var(--space-md);
+      max-width: none;
+      display: grid;
+      border-top: 1px solid var(--fg);
+      counter-reset: skill;
+    }
+
+    .skills li {
+      margin: 0;
+      max-width: none;
+      border-bottom: 1px solid var(--line);
+      padding: 0.9rem 0 0.9rem 2.6rem;
+      font-size: 0.92rem;
+      color: var(--fg-2);
+      position: relative;
+      counter-increment: skill;
+    }
+
+    .skills li::before {
+      content: counter(skill, upper-roman);
+      position: absolute;
+      left: 0;
+      top: 0.95rem;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--rose);
+      font-size: 1.05rem;
+    }
+
+    .skills li strong {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.25rem;
+      letter-spacing: -0.015em;
+      color: var(--fg);
+      margin-bottom: 0.1rem;
+    }
+
+    .about {
+      margin-top: var(--space-xl);
+      padding: var(--space-lg);
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--forest);
+      border-radius: var(--radius);
+    }
+
+    .about > strong {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+
+    .about p { font-size: 0.93rem; }
+    .about-list { padding-left: var(--space-lg); margin: var(--space-sm) 0; }
+    .about-list li { margin-bottom: 0.3rem; font-size: 0.93rem; }
+
+    .references {
+      margin-top: var(--space-xl);
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--fg);
+    }
+
+    .references h3 { font-size: 1.5rem; margin: 0 0 var(--space-sm); font-style: italic; font-weight: 300; }
+
+    .references ol {
+      list-style: none;
+      counter-reset: ref;
+      padding: 0;
+      display: grid;
+      gap: 0.55rem;
+      max-width: none;
+    }
+
+    .references li {
+      counter-increment: ref;
+      display: grid;
+      grid-template-columns: 2rem 1fr;
+      font-size: 0.85rem;
+      color: var(--fg-2);
+      margin: 0;
+      max-width: 90ch;
+      line-height: 1.55;
+    }
+
+    .references li::before {
+      content: "[" counter(ref) "]";
+      font-size: 0.78rem;
+      color: var(--rose);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Closing photograph band */
+    .closing {
+      position: relative;
+      margin-top: clamp(4rem, 8vw, 7rem);
+      height: clamp(340px, 40vw, 600px);
+      overflow: hidden;
+      background: var(--forest);
+    }
+
+    .closing img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 55%;
+    }
+
+    .closing::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 45%, rgba(22, 48, 38, 0.85));
+    }
+
+    .closing-words {
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      right: 0;
+      bottom: clamp(1.5rem, 4vw, 3rem);
+      color: #F6F1E8;
+    }
+
+    .closing-words .big {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(2.2rem, 6vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      max-width: 12ch;
+      text-wrap: balance;
+    }
+
+    .closing-words .big .it { color: var(--pink); }
+
+    .closing-words .caption { color: #F6F1E8; opacity: 0.8; margin-top: 1rem; }
+
+    .credit {
+      padding: 1.25rem 0 2rem;
+      font-size: 0.78rem;
+      color: #BFD1C3;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1rem;
+      justify-content: space-between;
+      background: var(--forest-deep);
+    }
+
+    .credit p { margin: 0; font-size: 0.78rem; color: inherit; max-width: none; }
+    .credit em { color: #F6F1E8; }
+
+    /* =====================================================================
+       Motion (opt-in, reduced-motion safe)
+       ===================================================================== */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        opacity: 0;
+        transform: translateY(12px);
+        animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+      }
+      .reveal.d1 { animation-delay: 0.08s; }
+      .reveal.d2 { animation-delay: 0.18s; }
+      .reveal.d3 { animation-delay: 0.3s; }
+
+      @keyframes rise { to { opacity: 1; transform: none; } }
+
+      .stamp { animation: spin 42s linear infinite; }
+      @keyframes spin { to { transform: rotate(360deg); } }
+
+      .post { transition: transform 0.35s ease, box-shadow 0.35s ease; }
+      .post:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
+    }
+
+    @media print {
+      .masthead, .theme-toggle, .ch-blush .texture { display: none; }
+      .section { break-inside: avoid; padding: 2rem 0; }
+      .ch-forest, .ch-blush, .ch-mint, .ch-peach { background: #fff; --fg: #241F1B; --fg-2: #6B6159; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="container masthead-inner">
+      <a class="brand" href="#top">Purito <em>Türkiye</em></a>
+      <nav class="toc" aria-label="Sections">
+        <a href="#brief"><i>01</i>Brief</a>
+        <a href="#market"><i>02</i>Market</a>
+        <a href="#audience"><i>03</i>Audience</a>
+        <a href="#growth"><i>04</i>Growth</a>
+        <a href="#funnel"><i>05</i>Funnel</a>
+        <a href="#campaigns"><i>06</i>Campaigns</a>
+        <a href="#measurement"><i>07</i>Measurement</a>
+        <a href="#summary"><i>08</i>Summary</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme"></button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <header class="hero section">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy reveal">
+            <span class="eyebrow">Independent Portfolio Project</span>
+            <div class="hero-heading">
+              <h1>Purito <span class="it">Türkiye</span></h1>
+              <p class="hero-subtitle"><span><span class="nw">E-commerce</span> Growth Strategy</span></p>
+            </div>
+            <p class="hero-lede">An independent strategic analysis of Purito's Turkish online presence: market context, customer personas, marketplace and social channels, conversion funnel, and measurement.</p>
+          </div>
+
+          <figure class="hero-visual reveal d2">
+            <div class="hero-art">
+            <div class="hero-field" aria-hidden="true"></div>
+            <div class="hero-photo">
+              <img src="assets/purito-lineup.jpg" alt="Purito Seoul Wonder Releaf Centella skincare products arranged in a clean studio composition with centella leaves and ice" loading="eager" width="1366" height="1600">
+              <span class="photo-caption">PURITO SEOUL · PRODUCT EDITORIAL</span>
+            </div>
+            <svg class="stamp" viewBox="0 0 160 160" aria-hidden="true" focusable="false">
+              <defs>
+                <path id="stampPath" d="M80,80 m-60,0 a60,60 0 1,1 120,0 a60,60 0 1,1 -120,0"/>
+              </defs>
+              <circle cx="80" cy="80" r="79" fill="currentColor"/>
+              <text font-size="9" letter-spacing="1.7"><textPath href="#stampPath">INDEPENDENT PORTFOLIO PROJECT · NOT AFFILIATED ·</textPath></text>
+              <g class="leaf" transform="translate(56 56) scale(0.48)" fill="none" stroke-width="2.2" stroke-linecap="round">
+                <path d="M50 30 C 76 22, 92 40, 88 62 C 84 82, 66 92, 50 90 C 34 92, 16 82, 12 62 C 8 40, 24 22, 50 30 Z"/>
+                <path d="M50 30 V 88 M50 30 L 26 70 M50 30 L 74 70 M50 30 L 18 50 M50 30 L 82 50 M50 30 V 8"/>
+              </g>
+            </svg>
+            </div>
+            <figcaption>Product imagery from the supplied visual moodboard; used as a visual reference, not as an official campaign claim.</figcaption>
+          </figure>
+        </div>
+
+        <div class="hero-foot reveal d3">
+          <div class="disclaimer">
+            <strong>Portfolio Project.</strong> This is an independent strategic analysis created for demonstrating e-commerce, digital marketing, and brand strategy expertise. It is <strong>not</strong> an official Purito Seoul project, commissioned work, or affiliated with the brand. All recommendations, market analysis, and projections are illustrative case-study material for portfolio purposes.
+          </div>
+
+          <div class="hero-meta-footer">
+            <p><strong>Created</strong> October 2026 (revised)</p>
+            <p><strong>Author</strong> <em>Dilnaz</em></p>
+            <p><strong>Purpose</strong> Portfolio demonstration for e-commerce strategy, digital marketing, competitive analysis, and funnel optimization roles.</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 01. Brief -->
+    <section class="section ch-ivory" id="brief">
+      <div class="container">
+        <div class="brief-grid">
+          <aside class="brief-aside">
+            <span class="eyebrow plain">01 · brief</span>
+            <div class="folio" aria-hidden="true">01</div>
+            <figure class="inset">
+              <div class="inset-frame">
+                <img src="assets/purito-stickers.jpg" alt="Purito Seoul brand sticker sheet with the Purito wordmark, centella leaf illustrations and cruelty-free, vegan and earth-conscious badges" loading="lazy" width="1202" height="1400">
+              </div>
+              <figcaption class="caption"><sup>1</sup>Purito Seoul brand identity — moodboard reference</figcaption>
+            </figure>
+          </aside>
+
+          <div>
+            <h2>Strategic <span class="it">Context</span></h2>
+
+            <div class="ledger">
+              <div class="ledger-row">
+                <h4>Situation</h4>
+                <p><span class="claim-marker fact">FACT</span> Purito has an official Turkish online store. This case study focuses on improving discovery, product understanding, and the customer journey across its existing online presence.</p>
+              </div>
+            </div>
+
+            <h3>What This Analysis Covers</h3>
+            <ol class="checklist">
+              <li data-n="i."><span><strong>Market Landscape:</strong> Turkish K-beauty e-commerce trends, consumer behavior, competitive positioning</span></li>
+              <li data-n="ii."><span><strong>Target Audience:</strong> 3 core personas with distinct purchase drivers</span></li>
+              <li data-n="iii."><span><strong>Growth Opportunity:</strong> Product discovery, content strategy, and channel evaluation</span></li>
+              <li data-n="iv."><span><strong>Conversion Funnel:</strong> Awareness → Consideration → Purchase → Retention</span></li>
+              <li data-n="v."><span><strong>Campaign Concepts:</strong> Social media, influencer partnerships, seasonal activations</span></li>
+              <li data-n="vi."><span><strong>KPI Framework:</strong> Metrics, measurement, and optimization strategy</span></li>
+            </ol>
+
+            <h3>Scope &amp; Boundaries</h3>
+            <div class="ledger">
+              <div class="ledger-row">
+                <h4>Note on Data Sources</h4>
+                <p><span class="claim-marker project">SCOPE NOTE</span> This portfolio draft uses publicly visible brand information and strategic hypotheses. It does not include commissioned market research, verified platform audience figures, proprietary sales data, or a dated competitor price audit. Any commercial rollout should validate these inputs before investment.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02. Market Snapshot -->
+    <section class="section ch-forest" id="market">
+      <div class="container">
+        <div class="head-center">
+          <div class="folio" aria-hidden="true">02</div>
+          <span class="eyebrow plain">market snapshot</span>
+          <h2>Turkish <span class="nw">K-beauty</span><br class="bk"> <span class="it nw">E-commerce</span> Today</h2>
+        </div>
+
+        <div class="market-grid">
+          <div>
+            <h3 class="subhead">Market Context</h3>
+            <div class="ledger">
+              <div class="ledger-row">
+                <h4>Turkish <span class="nw">e-commerce</span></h4>
+                <p><span class="claim-marker project">RESEARCH GAP</span> The size and growth rate of the Turkish beauty e-commerce category, and the share attributable to K-beauty, are not quantified in this case study. Establish a baseline using current Ministry of Trade publications, marketplace category data, and a documented competitor audit before setting a market forecast.</p>
+              </div>
+              <div class="ledger-row">
+                <h4>Discovery &amp; purchase</h4>
+                <p><span class="claim-marker project">WORKING HYPOTHESIS</span> Instagram and TikTok can be tested as discovery channels, while expert-led explanations, creator reviews, and customer questions may help move shoppers into consideration. Validate channel contribution and payment preferences with local audience research and store analytics.</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="subhead">Purito's Strategic Position</h3>
+            <div class="ledger">
+              <div class="ledger-row">
+                <h4>Official presence</h4>
+                <p><span class="claim-marker fact">FACT</span> Purito has an official Turkish e-commerce store at <a href="https://www.purito.com.tr/" target="_blank" rel="noopener">purito.com.tr</a>. Product-level assortment, claims, sizes, availability, and pricing should be checked against the live catalogue before execution.</p>
+              </div>
+              <div class="ledger-row">
+                <h4>Growth opportunity</h4>
+                <p><span class="claim-marker recommend">RECOMMENDATION</span> Treat Trendyol, Hepsiburada, and Amazon Türkiye as potential discovery and sales channels to assess against the existing direct-to-consumer store. Prioritize only after checking current seller presence, margin, fulfilment requirements, brand control, and channel demand. Competitor visibility should be benchmarked through a documented social audit rather than assumed.</p>
+              </div>
+              <div class="ledger-row">
+                <h4>Target positioning</h4>
+                <p><span class="claim-marker recommend">RECOMMENDATION</span> Emphasize dermatological credibility, ingredient transparency, and routine-building education to differentiate from trend-driven K-beauty competitors.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="subhead">Competitive Reference</h3>
+        <div class="competitive-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Brand</th>
+                <th scope="col">Price Position</th>
+                <th scope="col">Positioning</th>
+                <th scope="col">Marketplace Presence</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>COSRX</strong></td>
+                <td>Audit current listings</td>
+                <td>Viral trend, accessibility</td>
+                <td>Trendyol, Hepsiburada</td>
+              </tr>
+              <tr>
+                <td><strong>Anua</strong></td>
+                <td>Audit current listings</td>
+                <td>Ingredient-forward, newer</td>
+                <td>Trendyol (growing)</td>
+              </tr>
+              <tr class="highlight">
+                <td><strong>Purito</strong></td>
+                <td>Audit current listings</td>
+                <td>Dermatological, clean formula</td>
+                <td>Official store + selective marketplaces</td>
+              </tr>
+              <tr>
+                <td><strong>Adjacent reference: Cetaphil</strong></td>
+                <td>Not comparable</td>
+                <td>Accessible, pharmacy-distributed</td>
+                <td>All channels</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">No competitor price ranges are presented because a dated, like-for-like listing audit is not included. Compare equivalent product sizes, seller authorization, shipping, promotions, and review volume before drawing price-position conclusions.</p>
+      </div>
+    </section>
+
+    <!-- 03. Target Audience -->
+    <section class="section ch-blush" id="audience">
+      <div class="texture" aria-hidden="true"></div>
+      <div class="container">
+        <div class="head-split">
+          <div>
+            <span class="eyebrow">target audience</span>
+            <h2>Core Customer<br class="bk"> <span class="it">Personas</span></h2>
+          </div>
+          <div class="folio" aria-hidden="true">03</div>
+        </div>
+
+        <div class="personas">
+          <article class="persona">
+            <span class="persona-index">Persona I</span>
+            <h4>The Ingredient Researcher</h4>
+            <p class="persona-meta"><strong>Hypothesis segment</strong> &nbsp;|&nbsp; <strong>Discovery:</strong> Search, Instagram</p>
+            <p>Ingredient-obsessed; researches skincare deeply. Willing to pay premium for proven formulas. Values dermatologist endorsements.</p>
+            <p class="persona-quote">Cica + proven formula. Dermatologist-tested.</p>
+          </article>
+
+          <article class="persona">
+            <span class="persona-index">Persona II</span>
+            <h4>The TikTok Discoverer</h4>
+            <p class="persona-meta"><strong>Hypothesis segment</strong> &nbsp;|&nbsp; <strong>Discovery:</strong> TikTok, Reels</p>
+            <p>Discovers skincare via viral trends. Budget-conscious but aspirational. Uses installments (taksit) to afford premium brands.</p>
+            <p class="persona-quote">Help me understand what fits my routine — and what it costs.</p>
+          </article>
+
+          <article class="persona">
+            <span class="persona-index">Persona III</span>
+            <h4>The Gifter</h4>
+            <p class="persona-meta"><strong>Hypothesis segment</strong> &nbsp;|&nbsp; <strong>Discovery:</strong> Instagram, referrals</p>
+            <p>Buys gifting bundles for friends/family. Values premium packaging. Seeks "safe" recommendations for varied skin types.</p>
+            <p class="persona-quote">A considered gift, with clear guidance for choosing a routine.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04. Growth Opportunity -->
+    <section class="section ch-milk" id="growth">
+      <div class="container">
+        <div class="head-grid">
+          <div>
+            <span class="eyebrow plain">04 · growth opportunity</span>
+            <div class="folio" aria-hidden="true">04</div>
+          </div>
+          <div>
+            <h2>Channel &amp; Tactical <span class="it">Expansion</span></h2>
+
+            <h3 class="subhead" style="margin-top:var(--space-lg)">Marketplace Strategy</h3>
+            <p class="lede"><span class="claim-marker recommend">RECOMMEND</span> Evaluate <strong>Trendyol</strong> as the first marketplace test because of its broad shopping use case; assess <strong>Hepsiburada</strong> and <strong>Amazon Türkiye</strong> as secondary options. Confirm current category demand, seller terms, fees, and payment features before selecting a channel.</p>
+          </div>
+        </div>
+
+        <div class="concept-frame">
+          <div class="concept-bar" aria-hidden="true"><i></i><i></i><i></i> Marketplace listing concept <span>Trendyol · illustrative</span></div>
+          <div class="concept-inner">
+            <div class="concept-head">
+              <h4>Marketplace Listing Concept</h4>
+              <p class="note" style="margin:0"><strong>⚠️ Concept:</strong> This is an illustrative mockup of how Purito could be positioned on Trendyol. Product names, prices, and features are conceptual and do not represent actual current listings. Do not use these as reference for real pricing or product availability.</p>
+            </div>
+
+            <div class="listing-grid">
+              <article class="listing">
+                <div class="listing-visual">
+                  <img src="assets/purito-lineup.jpg" alt="Purito Wonder Releaf Centella cream, toner, serum and eye cream" loading="lazy" width="1366" height="1600">
+                  <span class="visual-tag">Purito product photography · moodboard reference</span>
+                </div>
+                <div class="listing-info">
+                  <div class="product-name">Purito Cica-Focused Skincare</div>
+                  <div class="product-price">Price: verify live listing</div>
+                  <div class="product-detail">
+                    <span class="check">Centella-based moisturizer</span>
+                    <span class="check">Dermatologist-tested positioning</span>
+                    <em>Check official store for actual price &amp; availability</em>
+                  </div>
+                </div>
+              </article>
+
+              <article class="listing">
+                <div class="listing-visual">
+                  <img src="assets/purito-box-stack.jpg" alt="Two stacked Purito Seoul mint acrylic gift boxes tied with a deep green ribbon" loading="lazy" width="1224" height="1400">
+                  <span class="visual-tag">Purito gift-box photography · moodboard reference</span>
+                </div>
+                <div class="listing-info">
+                  <div class="product-name">Purito Skincare Routine Kit</div>
+                  <div class="product-price">Price: verify live listing</div>
+                  <div class="product-detail">
+                    <span class="check">3-step hydrating routine</span>
+                    <span class="check">Bundle pricing value proposition</span>
+                    <em>Check official store for actual price &amp; availability</em>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <p class="source-line"><small><strong>Source:</strong> For verified current Purito products and pricing, visit <a href="https://www.purito.com.tr/" target="_blank" rel="noopener">purito.com.tr</a> or check Trendyol marketplace directly.</small></p>
+          </div>
+        </div>
+
+        <div class="head-grid" style="margin-top:var(--space-2xl)">
+          <div></div>
+          <div>
+            <h3 class="subhead" style="margin-top:0">Social &amp; Content Strategy</h3>
+            <p class="lede"><span class="claim-marker recommend">RECOMMEND</span> Shift from brand-only content to <strong>ingredient education + UGC</strong>.</p>
+          </div>
+        </div>
+
+        <div class="concept-frame">
+          <div class="concept-bar" aria-hidden="true"><i></i><i></i><i></i> Social campaign concept framework <span>Instagram · TikTok · illustrative</span></div>
+          <div class="concept-inner">
+            <div class="concept-head">
+              <h4>Social Campaign Concept Framework</h4>
+              <p class="note" style="margin:0"><strong>⚠️ Concepts:</strong> These are example content themes, not actual campaigns or partnerships. Execution would require brand alignment and transparent partnership disclosures.</p>
+            </div>
+
+            <div class="campaign-grid">
+              <article class="post">
+                <div class="post-art art-edu">
+                  <img src="assets/purito-lineup.jpg" alt="" loading="lazy" width="1366" height="1600">
+                  <span class="post-kicker">Educational Content</span>
+                  <span class="post-headline">How <span class="it">Cica</span> Works on Sensitive Skin</span>
+                </div>
+                <div class="post-body">
+                  <div class="post-title">How Cica Works on Sensitive Skin</div>
+                  <p class="post-copy">60–90 second educational video explaining centella science with credible sources.</p>
+                  <div class="post-cta">Learn</div>
+                </div>
+              </article>
+
+              <article class="post">
+                <div class="post-art art-partner">
+                  <img src="assets/purito-box-display.jpg" alt="" loading="lazy" width="2000" height="1153">
+                  <span class="post-kicker">Partnership Model</span>
+                  <span class="post-headline">Skincare <span class="it">Educator</span> Partnership</span>
+                </div>
+                <div class="post-body">
+                  <div class="post-title">Skincare Educator Partnership</div>
+                  <p class="post-copy">Clearly disclosed collaboration with dermatologist or skincare expert. Transparent terms and affiliate link if applicable.</p>
+                  <div class="post-cta">Partner Info</div>
+                </div>
+              </article>
+
+              <article class="post">
+                <div class="post-art art-stories">
+                  <img src="assets/purito-box-stack.jpg" alt="" loading="lazy" width="1224" height="1400">
+                  <span class="post-kicker">Customer Stories</span>
+                  <span class="post-headline">Shared <span class="it">Customer</span> Experience</span>
+                </div>
+                <div class="post-body">
+                  <div class="post-title">Shared Customer Experience</div>
+                  <p class="post-copy">User-generated content (with permission). Real customer feedback shared transparently with credit.</p>
+                  <div class="post-cta">Share Yours</div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05. Conversion Funnel -->
+    <section class="section ch-mint" id="funnel">
+      <div class="container">
+        <div class="head-center">
+          <div class="folio" aria-hidden="true">05</div>
+          <span class="eyebrow plain">conversion funnel</span>
+          <h2>From Awareness<br class="bk"> to <span class="it">Loyalty</span></h2>
+        </div>
+
+        <ol class="funnel">
+          <li class="stage" style="--w: 100%">
+            <div class="stage-band">
+              <span class="stage-num">1</span>
+              <h4>Awareness</h4>
+            </div>
+            <div class="stage-copy">
+              <p><strong>Goal:</strong> Reach ingredient-conscious consumers</p>
+              <p><strong>Channels:</strong> TikTok organic + paid, Instagram Reels, hashtag strategy (#cicakrem #koreacilt)</p>
+            </div>
+          </li>
+
+          <li class="stage" style="--w: 90%">
+            <div class="stage-band">
+              <span class="stage-num">2</span>
+              <h4>Consideration</h4>
+            </div>
+            <div class="stage-copy">
+              <p><strong>Goal:</strong> Build trust through education</p>
+              <p><strong>Tactics:</strong> Dermatologist reviews, ingredient explainers, customer testimonials, product quiz</p>
+            </div>
+          </li>
+
+          <li class="stage" style="--w: 80%">
+            <div class="stage-band">
+              <span class="stage-num">3</span>
+              <h4>Conversion</h4>
+            </div>
+            <div class="stage-copy">
+              <p><strong>Goal:</strong> Drive first purchase</p>
+              <p><strong>Levers:</strong> Clear delivery and returns information, transparent payment options, routine bundles, visible product benefits, and credible stock information. Confirm the current free-shipping threshold on the official store before publishing it.</p>
+            </div>
+          </li>
+
+          <li class="stage" style="--w: 70%">
+            <div class="stage-band">
+              <span class="stage-num">4</span>
+              <h4>Retention</h4>
+            </div>
+            <div class="stage-copy">
+              <p><strong>Goal:</strong> Drive repeat purchase in 60–90 days</p>
+              <p><strong>Tactics:</strong> Post-purchase email sequence, loyalty offer (15% off repeat), SMS reorder reminder</p>
+            </div>
+          </li>
+        </ol>
+
+        <h3 class="subhead" style="margin-top:var(--space-xl)">Key Conversion Metrics</h3>
+        <div class="legend" aria-label="Legend">
+          <span><i></i> Verified fact</span>
+          <span><i class="dashed"></i> Proposed target (not verified)</span>
+        </div>
+        <div class="kpi-grid">
+          <div class="kpi-tile">
+            <span class="kpi-status">Proposed target</span>
+            <div class="kpi-label">Funnel Target</div>
+            <div class="kpi-value">Baseline first</div>
+            <p class="kpi-desc">Conversion rate<br>(visitor → purchase)</p>
+          </div>
+          <div class="kpi-tile">
+            <span class="kpi-status">Proposed target</span>
+            <div class="kpi-label">Target AOV</div>
+            <div class="kpi-value">Set by margin</div>
+            <p class="kpi-desc">Average order value<br>(1–2 products + bundle)</p>
+          </div>
+          <div class="kpi-tile">
+            <span class="kpi-status">Proposed target</span>
+            <div class="kpi-label">Repeat Rate</div>
+            <div class="kpi-value">Track by cohort</div>
+            <p class="kpi-desc">Customers who<br>repurchase in 90d</p>
+          </div>
+          <div class="kpi-tile">
+            <span class="kpi-status">Proposed target</span>
+            <div class="kpi-label">CAC</div>
+            <div class="kpi-value">Set by LTV</div>
+            <p class="kpi-desc">Customer acquisition cost<br>(via paid social)</p>
+          </div>
+        </div>
+        <p class="note">These are measurement prompts, not performance targets. Set numeric goals only after collecting a baseline, confirming contribution margin and customer lifetime value, and agreeing on a measurement window.</p>
+      </div>
+    </section>
+
+    <!-- 06. Campaign Concepts -->
+    <section class="section ch-ivory" id="campaigns">
+      <div class="container">
+        <div class="head-grid">
+          <div>
+            <span class="eyebrow plain">06 · campaign concepts</span>
+            <div class="folio" aria-hidden="true">06</div>
+          </div>
+          <div>
+            <h2>Tactical Initiatives <span class="it">(Next 90 Days)</span></h2>
+          </div>
+        </div>
+
+        <div class="initiatives">
+          <article class="initiative">
+            <h4>Content Strategy: Educational Focus</h4>
+            <dl>
+              <div><dt>Approach</dt><dd><span class="claim-marker recommend">RECOMMEND</span> Create original educational content about centella and cica skincare benefits.</dd></div>
+              <div><dt>Format</dt><dd>Short-form video (60–90 sec Instagram Reels, TikTok)</dd></div>
+              <div><dt>Cadence</dt><dd>2–3 per week</dd></div>
+              <div><dt>Goal</dt><dd>Build authority on ingredient benefits, not just product promotion</dd></div>
+            </dl>
+          </article>
+
+          <article class="initiative">
+            <h4>Influencer Partnerships: Transparent Approach</h4>
+            <dl>
+              <div><dt>Strategy</dt><dd><span class="claim-marker recommend">RECOMMEND</span> Partner with skincare educators and micro-influencers (20k–100k) who align with brand values.</dd></div>
+              <div><dt>Model</dt><dd>Clearly disclosed sponsored partnerships, not seeding</dd></div>
+              <div><dt>Audience</dt><dd>Those with genuine interest in skincare science, not just followers</dd></div>
+              <div><dt>Cost</dt><dd>Set through creator rate cards and campaign budget</dd></div>
+            </dl>
+          </article>
+
+          <article class="initiative">
+            <h4>Seasonal Campaigns: Occasion-Based</h4>
+            <dl>
+              <div><dt>Timing</dt><dd>Pre-Ramadan (early March) and holiday season (October–November)</dd></div>
+              <div><dt>Product strategy</dt><dd>Highlight bundled routines as gifting options</dd></div>
+              <div><dt>Positioning</dt><dd>Premium skincare gift with care/ritual messaging (not discount-driven)</dd></div>
+              <div><dt>Goal</dt><dd>Increase average order value during high-intent periods</dd></div>
+            </dl>
+          </article>
+
+          <article class="initiative">
+            <h4>Marketplace Presence</h4>
+            <dl>
+              <div><dt>Actions (recommendation)</dt><dd><span class="claim-marker recommend">RECOMMEND</span></dd></div>
+            </dl>
+            <ul class="bullets" style="margin-top:0.8rem">
+              <li>Ensure accurate, consistent product information across channels</li>
+              <li>Use authentic product imagery and descriptions</li>
+              <li>Respond to customer questions promptly and transparently</li>
+              <li>Encourage genuine customer reviews through excellent service</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07. KPI Measurement -->
+    <section class="section ch-peach" id="measurement">
+      <div class="container">
+        <div class="head-grid">
+          <div>
+            <span class="eyebrow plain">07 · kpi measurement</span>
+            <div class="folio" aria-hidden="true">07</div>
+          </div>
+          <div>
+            <h2>Metrics &amp; <span class="it">Monitoring</span></h2>
+
+            <h3 class="subhead" style="margin-top:var(--space-md)">Measurement Framework</h3>
+            <p><span class="claim-marker project">FRAMEWORK (Not Forecasts)</span> The following outlines what to track and how to measure progress. This case study does not have access to Purito's internal Turkish e-commerce baseline; therefore, it proposes a measurement system rather than forecasting performance.</p>
+          </div>
+        </div>
+
+        <div class="measure-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Metric</th>
+                <th scope="col">What It Measures</th>
+                <th scope="col">How to Track</th>
+                <th scope="col">Illustrative Reference</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Social Reach</strong></td>
+                <td>Content visibility and audience growth</td>
+                <td>Instagram Insights, TikTok Analytics</td>
+                <td>Growth from baseline → trend up</td>
+              </tr>
+              <tr>
+                <td><strong>Engagement Rate</strong></td>
+                <td>How audience interacts with content</td>
+                <td>Platform-native analytics (likes, comments, shares)</td>
+                <td>Establish a format-specific baseline</td>
+              </tr>
+              <tr>
+                <td><strong>Site Conversion Rate</strong></td>
+                <td>% of visitors who make a purchase</td>
+                <td>Google Analytics 4, Shopify</td>
+                <td>Compare with a relevant, sourced category benchmark</td>
+              </tr>
+              <tr>
+                <td><strong>Customer Acquisition Cost (CAC)</strong></td>
+                <td>Ad spend ÷ new customers</td>
+                <td>Meta Ads Manager, platform attribution</td>
+                <td>Set against contribution margin and customer lifetime value</td>
+              </tr>
+              <tr>
+                <td><strong>Average Order Value (AOV)</strong></td>
+                <td>Revenue ÷ number of orders</td>
+                <td>Shopify, Trendyol analytics</td>
+                <td>Target: Higher with bundled products</td>
+              </tr>
+              <tr>
+                <td><strong>Repeat Purchase Rate</strong></td>
+                <td>% of customers who buy again</td>
+                <td>Customer database, email platform</td>
+                <td>60–90 day window; healthy: 15–25%</td>
+              </tr>
+              <tr>
+                <td><strong>Customer Lifetime Value (CLV)</strong></td>
+                <td>Total revenue per customer</td>
+                <td>CRM or analytics platform</td>
+                <td>CLV ÷ CAC should be ≥ 3:1 for sustainability</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="subhead">Measurement Cadence</h3>
+        <ol class="cadence">
+          <li><span class="cadence-week">Week 1</span><p>Collect data from all platforms (Google Analytics 4, Meta Ads, TikTok, Shopify, marketplace feeds)</p></li>
+          <li><span class="cadence-week">Week 2</span><p>Analyze trends—what content performed well, which channels drove orders, where did visitors drop off</p></li>
+          <li><span class="cadence-week">Week 3</span><p>Plan tactical adjustments (reallocate budget, test new creative angles, refine audience targeting)</p></li>
+          <li><span class="cadence-week">Week 4</span><p>Execute changes and monitor performance daily</p></li>
+        </ol>
+
+        <h3 class="subhead">Testing &amp; Optimization</h3>
+        <div class="ledger tests">
+          <div class="ledger-row">
+            <h4>Creative variation</h4>
+            <p>Educational vs. lifestyle vs. founder-voice content → measure engagement and traffic</p>
+          </div>
+          <div class="ledger-row">
+            <h4>Messaging angle</h4>
+            <p>Ingredient focus vs. skin-benefit focus vs. routine-building → measure click-through and conversion</p>
+          </div>
+          <div class="ledger-row">
+            <h4>Influencer partnerships</h4>
+            <p>Micro-educator vs. broader beauty creator → measure reach, engagement, referral quality</p>
+          </div>
+          <div class="ledger-row">
+            <h4>Offer structure</h4>
+            <p>Bundle pricing, free-shipping threshold, seasonal promotions → measure AOV and conversion lift</p>
+          </div>
+          <div class="ledger-row">
+            <h4>Email strategy</h4>
+            <p>Product education vs. promotion vs. community → measure open rate, click rate, conversion</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Summary -->
+    <section class="section ch-ivory" id="summary" style="padding-bottom:0">
+      <div class="container">
+        <div class="head-center">
+          <div class="folio" aria-hidden="true">08</div>
+          <span class="eyebrow plain">summary</span>
+          <h2>Summary &amp; Key <span class="it">Takeaways</span></h2>
+        </div>
+
+        <div class="summary-grid">
+          <div>
+            <h3 class="subhead" style="margin-top:0">Strategic Recommendation</h3>
+            <p class="statement"><span class="claim-marker recommend">RECOMMENDATION</span> For accelerated growth in Turkey's e-commerce market, Purito should prioritize: (1) <strong>Marketplace optimization</strong> through a curated, consistent presence across the official store and selected marketplaces, (2) <strong>Educational content</strong> positioning the brand as a cica/ingredient authority rather than trend-following, and (3) <strong>Transparent partnerships</strong> with dermatologists and skincare educators to build credibility among ingredient-conscious consumers.</p>
+          </div>
+
+          <div>
+            <h3 class="subhead">Skills Demonstrated</h3>
+            <ul class="skills">
+              <li><strong>E-commerce Strategy:</strong> Marketplace selection, pricing, conversion funnel design</li>
+              <li><strong>Digital Marketing:</strong> Social channel strategy, content pillars, influencer partnership frameworks</li>
+              <li><strong>Market Analysis:</strong> Competitive landscape, consumer behavior research, growth opportunity identification</li>
+              <li><strong>Brand Strategy:</strong> Positioning, differentiation, audience-specific messaging</li>
+              <li><strong>Analytics &amp; Measurement:</strong> KPI frameworks, performance tracking, optimization methodology</li>
+              <li><strong>Project Execution:</strong> Campaign concepts, tactical roadmaps, resource planning</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="about">
+          <strong>About This Case Study</strong>
+          <p style="margin-top:0.5rem">This is an <strong>independent portfolio project</strong> created to demonstrate e-commerce strategy, digital marketing, and brand analysis expertise. It is <strong>not</strong>:</p>
+          <ul class="about-list">
+            <li>An official Purito Seoul project or commissioned work</li>
+            <li>Affiliated with or endorsed by Purito Seoul</li>
+            <li>A real business plan or market forecast</li>
+            <li>Based on proprietary Purito data or analytics</li>
+          </ul>
+
+          <p><strong>Data Transparency:</strong> Specific sources (e.g., purito.com.tr) are linked directly. Market-size estimates, growth percentages, and competitive claims without explicit sources are illustrative assumptions. Any real e-commerce strategy would require proprietary research, verified data, and collaboration with brand leadership.</p>
+
+          <p style="margin-top:var(--space-sm)"><strong>Product &amp; Pricing:</strong> Product mockups are conceptual. For verified current Purito products, pricing, and marketplace listings, visit <a href="https://www.purito.com.tr/" target="_blank" rel="noopener">purito.com.tr</a> directly.</p>
+        </div>
+
+        <section class="references" aria-labelledby="refs-title">
+          <h3 id="refs-title">References</h3>
+          <ol>
+            <li><span>Purito Türkiye, official online store. <a href="https://www.purito.com.tr/" target="_blank" rel="noopener">purito.com.tr</a> (product range, positioning, current pricing; accessed for this case study, verify before use).</span></li>
+            <li><span>Trendyol, Hepsiburada, and Amazon Türkiye — suggested channels for a future documented marketplace audit; no seller or listing claims are made in this draft.</span></li>
+            <li><span>Turkish Ministry of Trade and marketplace category reports — recommended sources for future market sizing; no specific market-size statistic is asserted in this draft.</span></li>
+          </ol>
+        </section>
+      </div>
+
+      <div class="closing">
+        <img src="assets/purito-box-display.jpg" alt="Purito Seoul mint acrylic gift box beside a Seoul-skyline product display holding Wonder Releaf Centella products" loading="lazy" width="2000" height="1153">
+        <div class="closing-words">
+          <div class="container">
+            <p class="big">Rooted in <span class="it">wonder,</span> ready for Türkiye</p>
+            <p class="caption">Purito Seoul · gift-box editorial · moodboard reference</p>
+          </div>
+        </div>
+      </div>
+      <footer class="credit">
+        <div class="container" style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:.25rem 1rem">
+          <p>Independent portfolio project · Purito Türkiye</p>
+          <p>Author: <em>Dilnaz</em></p>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var btn = document.getElementById('themeToggle');
+      var mq = window.matchMedia('(prefers-color-scheme: dark)');
+      var ICON_MOON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>';
+      var ICON_SUN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>';
+
+      function stored() {
+        try { return localStorage.getItem('theme'); } catch (e) { return null; }
+      }
+      function save(value) {
+        try { localStorage.setItem('theme', value); } catch (e) { /* storage unavailable: ignore */ }
+      }
+      function isDark() {
+        var attr = root.getAttribute('data-theme');
+        if (attr === 'dark') return true;
+        if (attr === 'light') return false;
+        return mq.matches;
+      }
+      function render() {
+        var dark = isDark();
+        btn.innerHTML = dark ? ICON_SUN : ICON_MOON;
+        btn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+        btn.setAttribute('aria-pressed', String(dark));
+        btn.title = dark ? 'Light theme' : 'Dark theme';
+      }
+
+      var saved = stored();
+      if (saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved);
+      render();
+
+      btn.addEventListener('click', function () {
+        var next = isDark() ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        save(next);
+        render();
+      });
+
+      if (mq.addEventListener) {
+        mq.addEventListener('change', function () {
+          if (!stored()) root.removeAttribute('data-theme');
+          render();
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
